@@ -5,7 +5,7 @@ class fog {
     }
 
     package { "fog":
-        ensure   => "0.7.2",
+        ensure   => "1.11.1",
         provider => gem,
         require  => Package['fog-dep'],
     }
