@@ -1,4 +1,13 @@
-class fog {
+# Class: fog
+#
+# Manages the installation of fog and it's dependencies.
+#
+# This module is required by the cloud_provisioner library.
+#
+class fog(
+    $aws_access_key_id,
+    $aws_secret_access_key
+) {
     package { "fog-dep":
         name   => [ "libxslt-dev", "libxml2-dev" ],
         ensure => present,
@@ -19,5 +28,10 @@ class fog {
     package { "net-scp":
         ensure   => present,
         provider => gem,
+    }
+
+    file { "/root/.fog":
+        ensure  => file,
+        content => template("fog/fog.erb"),
     }
 }
