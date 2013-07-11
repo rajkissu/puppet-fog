@@ -30,6 +30,11 @@ class fog(
         provider => gem,
     }
 
+    package { "guid":
+        ensure   => present,
+        provider => gem,
+    }
+
     file { "/root/.fog":
         ensure  => file,
         content => template("fog/fog.erb"),
